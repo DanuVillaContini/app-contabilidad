@@ -1,4 +1,145 @@
-.debug{
+.debug {
     border: 1px solid black;
     border-radius: 5px;
 }
+/* Componente ModelFactura */
+.margin {
+    position: absolute;
+    border-left: 1px solid #d88;
+    height: 100%;
+    left: 3.3rem;
+    top: 0;
+}
+
+.custom-logo {
+    width: 55%;
+    height: 85%;
+    border: 2px solid #000;
+    border-radius: 10px;
+    box-shadow: 5px 5px 0px #000;
+    transition: all 0.3s ease;
+}
+
+.custom-list-info {
+    list-style: none;
+}
+.custom-container-factura {
+    position: relative;
+    box-sizing: border-box;
+    max-width: 300px;
+    font-family: cursive;
+    font-size: 20px;
+    border-radius: 10px;
+    background: #fff;
+    background-image: linear-gradient(#f5f5f0 1.1rem, #ccc 1.2rem);
+    background-size: 100% 1.2rem;
+    line-height: 1.2rem;
+    padding: 1.4rem 0.5rem 0.3rem 4.5rem;
+}
+
+.custom-container-factura::before,
+.custom-container-factura::after {
+    position: absolute;
+    content: "";
+    bottom: 10px;
+    width: 40%;
+    height: 10px;
+    box-shadow: 0 5px 14px rgba(0, 0, 0, 0.7);
+    z-index: -1;
+    transition: all 0.3s ease;
+}
+
+.custom-container-factura::before {
+    left: 15px;
+    transform: skew(-5deg) rotate(-5deg);
+}
+
+.custom-container-factura::after {
+    right: 15px;
+    transform: skew(5deg) rotate(5deg);
+}
+
+.custom-container-factura:hover::before,
+.custom-container-factura:hover::after {
+    box-shadow: 0 2px 14px rgba(0, 0, 0, 0.4);
+}
+
+.inputs-custom {
+    --input-focus: #2d8cf0;
+    --font-color: #323232;
+    --font-color-sub: #666;
+    --bg-color: #fff;
+    --main-color: #323232;
+    width: 200px;
+    height: 40px;
+    border-radius: 5px;
+    border: 2px solid var(--main-color);
+    background-color: var(--bg-color);
+    box-shadow: 4px 4px var(--main-color);
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--font-color);
+    padding: 5px 10px;
+    outline: none;
+}
+
+.inputs-custom::placeholder {
+    color: var(--font-color-sub);
+    opacity: 0.8;
+}
+
+.inputs-custom:focus {
+    border: 2px solid var(--input-focus);
+}
+
+.btn-custom:active {
+    box-shadow: 0px 0px var(--main-color);
+    transform: translate(3px, 3px);
+}
+
+
+.btt-custom {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    color: #fff;
+    background-color: #5977b2 !important; 
+    border: 2px solid #000;
+    border-radius: 10px;
+    box-shadow: 5px 5px 0px #000;
+    transition: all 0.3s ease;
+}
+
+.btt-custom:hover {
+    background-color: #fff;
+    color: #ff5252;
+    border: 2px solid #ff5252;
+    box-shadow: 5px 5px 0px #ff5252;
+}
+
+.btt-custom:active {
+    background-color: #fcf414;
+    box-shadow: none;
+    transform: translateY(4px);
+}
+/*Fin Componente ModelFactura */
+
+
+/* componente TablaIncremental */
+.table-custom {
+    --bg-color: #9ea1a4;
+    --main-color: #323232;
+    height: auto;
+    border-radius: 5px;
+    border: 2px solid var(--main-color);
+    background-color: var(--bg-color);
+    box-shadow: 4px 4px var(--main-color);
+    font-size: 15px;
+    font-weight: 600;
+    padding: 5px 10px;
+    outline: none;
+}
+/*Fin componente TablaIncremental */
