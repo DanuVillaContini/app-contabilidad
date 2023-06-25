@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Button, Col, Container, FloatingLabel, Form, Row, Table } from "react-bootstrap";
 import Logo from '../assets/logo.jpg'
 import html2canvas from "html2canvas";
@@ -40,24 +40,29 @@ function ModelFactura() {
         setRows(updatedRows);
         setTotal(calculatedTotal);
     };
+
+    useEffect(() => {
+        if (totalFinal !== 0) {
+            // Generar el contenido en formato PDF
+            const inputContainer = printableRef.current;
+            html2canvas(inputContainer).then((canvas) => {
+                const imgData = canvas.toDataURL("image/png");
+                const pdf = new jsPDF();
+                const pdfWidth = pdf.internal.pageSize.getWidth();
+                const pdfHeight = pdf.internal.pageSize.getHeight();
+                pdf.addImage(imgData, "PNG", 0, 0,200, pdfWidth, pdfHeight);
+
+                // Descargar el archivo PDF
+                pdf.save("factura.pdf");
+            });
+        }
+    }, [totalFinal]);
+
     // -------- FUNCION CALCULAR TOTAL FINAL---------
     const handleCalculateTotalFinal = () => {
         const totalDescuento = total - (total * (descuento / 100));
         const totalIVA = totalDescuento + (totalDescuento * (iva / 100));
-        setTotalFinal(totalIVA);
-
-        // Generar el contenido en formato PDF
-        const inputContainer = printableRef.current;
-        html2canvas(inputContainer).then((canvas) => {
-            const imgData = canvas.toDataURL("image/png");
-            const pdf = new jsPDF();
-            const pdfWidth = pdf.internal.pageSize.getWidth();
-            const pdfHeight = pdf.internal.pageSize.getHeight();
-            pdf.addImage(imgData, "PNG", 0, 0, 210, pdfWidth, pdfHeight);
-
-            // Descargar el archivo PDF
-            pdf.save("factura.pdf");
-        });
+        setTotalFinal(totalIVA.toFixed(2));
     };
 
 
