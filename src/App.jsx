@@ -1,19 +1,20 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom"
 import MenuFactura from "./screen/MenuFactura"
-
+import Home from "./screen/Home"
 // import ModelFactura from "./Components/ModelFactura";
 
 
 export default function App() {
     return (
-        <>
-            <BrowserRouter>
 
+        <>
+            { <BrowserRouter>
                 <Routes>
-                    <Route path="/" element={<MenuFactura/>} />
+                    <Route path="/" element={<Home/>} />
+                    <Route path="/MenuFactura" element={<MenuFactura/>} />
                 </Routes>
-            </BrowserRouter>
-            
+            </BrowserRouter> }
+        
         </>
     )
 }
